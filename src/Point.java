@@ -38,7 +38,7 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point "+ id +"{" +
+        return "REMOVEME Point "+ id +"{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';
