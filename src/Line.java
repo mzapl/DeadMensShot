@@ -3,6 +3,7 @@ public class Line {
     int id = 0;
     Point startingPoint;
     Point endingPoint;
+    Point middlePoint;
 
     //equation is ax+b
     double a;
@@ -13,16 +14,24 @@ public class Line {
         startingId++;
         this.startingPoint = startingPoint;
         this.endingPoint = endingPoint;
+        this.middlePoint = setMiddlePoint(startingPoint, endingPoint);
         a = (double)(endingPoint.getY()-startingPoint.getY()) / (endingPoint.getX() - startingPoint.getX());
         b = (startingPoint.getY()) - (a * startingPoint.getX());
-        System.out.println("New line! equation y="+ a +"*x + "+ b);
     }
 
     @Override
     public String toString() {
-        return "Line "+ id + "{" +
-                "startingPoint=" + startingPoint +
+        return "Line{" +
+                "id=" + id +
+                ", startingPoint=" + startingPoint +
                 ", endingPoint=" + endingPoint +
+                ", middlePoint=" + middlePoint +
+                ", equation: y="+ a +"*x + "+ b+
                 '}';
     }
+
+    private Point setMiddlePoint(Point startingPoint, Point endingPoint){
+        return new Point((startingPoint.getX() + endingPoint.getX()) / 2, (startingPoint.getY() + endingPoint.getY()) / 2);
+    }
+
 }

@@ -12,6 +12,7 @@ public class DeadMensShot {
         Scanner in = new Scanner(System.in);
         int N = in.nextInt();
 
+        //Read point coords
         for (int i = 0; i < N; i++) {
             int x = in.nextInt();
             int y = in.nextInt();
@@ -19,6 +20,7 @@ public class DeadMensShot {
             points.add(point);
         }
 
+        //Join points into pairs, create lines
         for(Point point1:points){
             for(Point point2:points){
                 if(point2.id == point1.id + 1){
@@ -27,6 +29,8 @@ public class DeadMensShot {
                 }
             }
         }lines.add(new Line(points.get(0), points.get(points.size()-1)));
+
+        Polygon polygon = new Polygon(lines);
 
         Point shotsCorrection = incrementBelowZeros(points);
 
