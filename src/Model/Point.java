@@ -1,3 +1,5 @@
+package Model;
+
 public class Point {
     static int startingId = 0;
     public int id;
@@ -38,7 +40,7 @@ public class Point {
 
     @Override
     public String toString() {
-        return "Point "+ id +"{" +
+        return "Model.Point "+ id +"{" +
                 "x=" + x +
                 ", y=" + y +
                 '}';

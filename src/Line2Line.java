@@ -1,3 +1,6 @@
+import Model.Line;
+import Model.Point;
+
 public class Line2Line {
     Line firstLine;
     Line anotherLine;
@@ -11,7 +14,7 @@ public class Line2Line {
     public Line2Line(Line firstLine, Line anotherLine) {
         this.firstLine = firstLine;
         this.anotherLine = anotherLine;
-        det = (firstLine.a * anotherLine.b) - (anotherLine.a * firstLine.b);
+        det = (firstLine.getA() * anotherLine.getB()) - (anotherLine.getA() * firstLine.getB());
 
         areParallel = parallel();
         intersectionPoint = intersection();
@@ -22,8 +25,8 @@ public class Line2Line {
     }
 
     Point intersection(){
-        x = ((anotherLine.b) - (firstLine.b)) / det;
-        y = ((firstLine.a) - (anotherLine.a)) / det;
+        x = ((anotherLine.getB()) - (firstLine.getB()) / det);
+        y = ((firstLine.getA()) - (anotherLine.getA())) / det;
         return new Point(x, y);
     }
 

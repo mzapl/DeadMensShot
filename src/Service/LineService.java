@@ -1,15 +1,21 @@
+package Service;
+
+import Model.Line;
+import Model.Point;
+
 import javax.swing.*;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-class LineComponent extends JComponent {
+public class LineService extends JComponent {
+
 
     ArrayList<Line2D.Double> lines;
     ArrayList<Point2D.Double> points;
 
-    LineComponent(int width, int height) {
+    public LineService(int width, int height) {
         super();
         setPreferredSize(new Dimension(width,height));
         lines = new ArrayList<Line2D.Double>();
@@ -19,7 +25,7 @@ class LineComponent extends JComponent {
     public void addLine(Line line) {
         int width = (int)getPreferredSize().getWidth();
         int height = (int)getPreferredSize().getHeight();
-        Line2D.Double line2d = new Line2D.Double(line.startingPoint.x, line.startingPoint.y, line.endingPoint.x, line.endingPoint.y);
+        Line2D.Double line2d = new Line2D.Double(line.getStartingPoint().getX(), line.getStartingPoint().getY(), line.getEndingPoint().getX(), line.getEndingPoint().getY());
         lines.add(line2d);
         repaint();
     }

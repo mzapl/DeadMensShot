@@ -1,3 +1,8 @@
+import Model.Line;
+import Model.Point;
+import Model.Polygon;
+import Service.LineService;
+
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -30,7 +35,7 @@ public class DeadMensShot {
             }
         }lines.add(new Line(points.get(0), points.get(points.size()-1)));
 
-        Polygon polygon = new Polygon(lines);
+        Polygon polygon = new Polygon(points, lines);
 
         Point shotsCorrection = incrementBelowZeros(points);
 
@@ -50,15 +55,15 @@ public class DeadMensShot {
     public static void myDrawer(ArrayList<Line> lines, ArrayList<Point> points, ArrayList<Point> shots){
         Runnable r = new Runnable() {
             public void run() {
-                LineComponent lineComponent = new LineComponent(500,500);
+                LineService lineService = new LineService(500,500);
                 for(Line line:lines){
-                    lineComponent.addLine(line);
+                    lineService.addLine(line);
                 }
 
                 for(Point point:points){
-                    lineComponent.addPoint(point);
+                    lineService.addPoint(point);
                 }
-                JOptionPane.showMessageDialog(null, lineComponent);
+                JOptionPane.showMessageDialog(null, lineService);
             }
         };
 
