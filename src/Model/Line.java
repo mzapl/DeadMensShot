@@ -2,7 +2,7 @@ package Model;
 
 public class Line {
     static int startingId = 0;
-    int id = 0;
+    int id;
     Point startingPoint;
     Point endingPoint;
     Point middlePoint;
@@ -10,6 +10,8 @@ public class Line {
     //equation is ax+b
     double a;
     double b;
+    double c;
+    double d;
 
     public Line(Point startingPoint, Point endingPoint) {
         this.id = startingId;
@@ -17,8 +19,10 @@ public class Line {
         this.startingPoint = startingPoint;
         this.endingPoint = endingPoint;
         this.middlePoint = setMiddlePoint(startingPoint, endingPoint);
-        a = (double)(endingPoint.getY()-startingPoint.getY()) / (endingPoint.getX() - startingPoint.getX());
-        b = (startingPoint.getY()) - (a * startingPoint.getX());
+        this.a = endingPoint.getY() - startingPoint.getY();
+        this.b = startingPoint.getX() - endingPoint.getX();
+        this.c = (endingPoint.getX() * startingPoint.getY()) - (startingPoint.getX() * endingPoint.getY());
+        this.d = (a * startingPoint.getX()) + (b * startingPoint.getY()) + c;
     }
 
     public Point getStartingPoint() {

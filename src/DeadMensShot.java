@@ -1,20 +1,20 @@
 import Model.Line;
 import Model.Point;
 import Model.Polygon;
-import Service.LineService;
+import Service.DrawService;
 
 import javax.swing.*;
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class DeadMensShot {
-    public static void main(String args[]) {
+    public static void main(String []args) {
 
         //TARGET INPUT AND PROCESSING
         ArrayList<Point> points = new ArrayList<>();
         ArrayList<Line> lines = new ArrayList<>();
 
-        Scanner in = new Scanner(System.in);
+        Scanner in = new Scanner(TestCases.getCase1());
         int N = in.nextInt();
 
         //Read point coords
@@ -28,7 +28,7 @@ public class DeadMensShot {
         //Join points into pairs, create lines
         for(Point point1:points){
             for(Point point2:points){
-                if(point2.id == point1.id + 1){
+                if(point2.getId() == point1.getId() + 1){
                     Line line = new Line(point1, point2);
                     lines.add(line);
                 }
@@ -55,15 +55,15 @@ public class DeadMensShot {
     public static void myDrawer(ArrayList<Line> lines, ArrayList<Point> points, ArrayList<Point> shots){
         Runnable r = new Runnable() {
             public void run() {
-                LineService lineService = new LineService(500,500);
+                DrawService drawService = new DrawService(500,500);
                 for(Line line:lines){
-                    lineService.addLine(line);
+                    drawService.addLine(line);
                 }
 
                 for(Point point:points){
-                    lineService.addPoint(point);
+                    drawService.addPoint(point);
                 }
-                JOptionPane.showMessageDialog(null, lineService);
+                JOptionPane.showMessageDialog(null, drawService);
             }
         };
 
@@ -94,7 +94,7 @@ public class DeadMensShot {
     }
 
     static double minX(ArrayList<Point> points){
-        double min = Integer.MAX_VALUE;;
+        double min = Integer.MAX_VALUE;
         for (Point point: points){
             if(point.getX() < min){
                 min = point.getX();
@@ -104,7 +104,7 @@ public class DeadMensShot {
     }
 
     static double minY(ArrayList<Point> points){
-        double min = Integer.MAX_VALUE;;
+        double min = Integer.MAX_VALUE;
         for (Point point: points){
             if(point.getX() < min){
                 min = point.getY();

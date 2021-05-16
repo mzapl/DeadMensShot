@@ -1,7 +1,9 @@
+package Service;
+
 import Model.Line;
 import Model.Point;
 
-public class Line2Line {
+public class Line2LineService {
     Line firstLine;
     Line anotherLine;
     double det;
@@ -11,7 +13,7 @@ public class Line2Line {
     boolean areParallel;
     Point intersectionPoint;
 
-    public Line2Line(Line firstLine, Line anotherLine) {
+    public Line2LineService(Line firstLine, Line anotherLine) {
         this.firstLine = firstLine;
         this.anotherLine = anotherLine;
         det = (firstLine.getA() * anotherLine.getB()) - (anotherLine.getA() * firstLine.getB());

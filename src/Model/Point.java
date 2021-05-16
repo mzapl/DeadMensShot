@@ -2,15 +2,19 @@ package Model;
 
 public class Point {
     static int startingId = 0;
-    public int id;
-    public double x;
-    public double y;
+    private int id;
+    private double x;
+    private double y;
 
     public Point(double x, double y) {
         this.id = startingId;
         startingId++;
         this.x = x;
         this.y = y;
+    }
+
+    public int getId() {
+        return id;
     }
 
     public double getX() {

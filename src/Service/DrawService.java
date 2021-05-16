@@ -9,13 +9,13 @@ import java.awt.geom.Line2D;
 import java.awt.geom.Point2D;
 import java.util.ArrayList;
 
-public class LineService extends JComponent {
+public class DrawService extends JComponent {
 
 
     ArrayList<Line2D.Double> lines;
     ArrayList<Point2D.Double> points;
 
-    public LineService(int width, int height) {
+    public DrawService(int width, int height) {
         super();
         setPreferredSize(new Dimension(width,height));
         lines = new ArrayList<Line2D.Double>();
