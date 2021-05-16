@@ -45,14 +45,21 @@ public class Line {
         return b;
     }
 
+    public double getC() {
+        return c;
+    }
+
+    public double getD() {
+        return d;
+    }
+
     @Override
     public String toString() {
-        return "Model.Line{" +
-                "id=" + id +
-                ", startingPoint=" + startingPoint +
+        return "Line{" +
+                "startingPoint=" + startingPoint +
                 ", endingPoint=" + endingPoint +
-                ", middlePoint=" + middlePoint +
-                ", equation: y="+ a +"*x + "+ b+
+                ", equation: " + a +"x +" + b +"y +" + c +" = 0"+
+                ", d=" + d +
                 '}';
     }
 

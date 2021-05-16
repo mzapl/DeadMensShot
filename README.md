@@ -12,6 +12,6 @@
         <a href="https://www.topcoder.com/thrive/articles/Geometry%20Concepts%20part%202:%20%20Line%20Intersection%20and%20its%20Applications">Geometry concepts</a>
     </li>
     <li>
-        <a href="https://stackoverflow.com/a/218081/12645536">Epic stackoverflow post</a>    
+        <a href="https://stackoverflow.com/a/218081/12645536">Problem description by Mecki</a>    
     </li>
 </ul>
