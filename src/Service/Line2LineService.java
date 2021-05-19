@@ -36,11 +36,11 @@ public class Line2LineService {
     }
 
     boolean oneIntersectionPoint(){
-        if ((firstLine.getD() > 0) && (anotherLine.getD() > 0)){
+        if ((firstLine.getD1(anotherLine) > 0) && (firstLine.getD2(anotherLine) > 0)){
             return false;
         }
 
-        if ((firstLine.getD() < 0) && (anotherLine.getD() < 0)){
+        if ((firstLine.getD1(anotherLine) < 0) && (firstLine.getD2(anotherLine) < 0)){
             return false;
         }
 

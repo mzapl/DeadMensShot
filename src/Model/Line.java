@@ -7,22 +7,22 @@ public class Line {
     Point endingPoint;
     Point middlePoint;
 
-    //equation is ax+b
+    //equation standard form: A*x + B*y + C = 0
     double a;
     double b;
     double c;
-    double d;
+
+    //whatever
+    double d1, d2;
 
     public Line(Point startingPoint, Point endingPoint) {
         this.id = startingId;
         startingId++;
         this.startingPoint = startingPoint;
         this.endingPoint = endingPoint;
-        this.middlePoint = setMiddlePoint(startingPoint, endingPoint);
         this.a = endingPoint.getY() - startingPoint.getY();
         this.b = startingPoint.getX() - endingPoint.getX();
         this.c = (endingPoint.getX() * startingPoint.getY()) - (startingPoint.getX() * endingPoint.getY());
-        this.d = (a * startingPoint.getX()) + (b * startingPoint.getY()) + c;
     }
 
     public Point getStartingPoint() {
@@ -49,8 +49,12 @@ public class Line {
         return c;
     }
 
-    public double getD() {
-        return d;
+    public double getD1(Line anotherLine) {
+        return (a * anotherLine.getStartingPoint().getX()) + (b * anotherLine.getStartingPoint().getY());
+    }
+
+    public double getD2(Line anotherLine) {
+        return (a * anotherLine.getEndingPoint().getX()) + (b * anotherLine.getEndingPoint().getY());
     }
 
     @Override
@@ -59,12 +63,6 @@ public class Line {
                 "startingPoint=" + startingPoint +
                 ", endingPoint=" + endingPoint +
                 ", equation: " + a +"x +" + b +"y +" + c +" = 0"+
-                ", d=" + d +
                 '}';
     }
-
-    private Point setMiddlePoint(Point startingPoint, Point endingPoint){
-        return new Point((startingPoint.getX() + endingPoint.getX()) / 2, (startingPoint.getY() + endingPoint.getY()) / 2);
-    }
-
 }
