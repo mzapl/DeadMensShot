@@ -8,12 +8,9 @@ public class Line2LineService {
     Line anotherLine;
     double det;
     double x, y;
-
-//    d1 = (a1 * v2x1) + (b1 * v2y1) + c1;
-//    d2 = (a1 * v2x2) + (b1 * v2y2) + c1;
     double d1, d2;
 
-    boolean areParallel;
+    boolean parallel, collinear, oneintersection;
     Point intersectionPoint;
 
     public Line2LineService(Line firstLine, Line anotherLine) {
@@ -21,14 +18,33 @@ public class Line2LineService {
         this.anotherLine = anotherLine;
         det = (firstLine.getA() * anotherLine.getB()) - (anotherLine.getA() * firstLine.getB());
 
-        areParallel = parallel();
-        intersectionPoint = intersection();
-        d1 = getD1();
-        d2 = getD2();
+        parallel = parallel();
+        collinear = collinear();
+
+        oneintersection = oneIntersectionPoint();
+        if(oneintersection){
+            intersectionPoint = intersection();
+        }
     }
 
     boolean parallel(){
         return this.det == 0;
+    }
+
+    boolean collinear(){
+        return ((firstLine.getA() * anotherLine.getB()) - (anotherLine.getA() * firstLine.getB()) == 0.0);
+    }
+
+    boolean oneIntersectionPoint(){
+        if ((firstLine.getD() > 0) && (anotherLine.getD() > 0)){
+            return false;
+        }
+
+        if ((firstLine.getD() < 0) && (anotherLine.getD() < 0)){
+            return false;
+        }
+
+        return !collinear;
     }
 
     Point intersection(){
@@ -37,26 +53,20 @@ public class Line2LineService {
         return new Point(x, y);
     }
 
-    double getD1(){
-//        (a1 * v2x1) + (b1 * v2y1) + c1;
-        return (firstLine.getA() * anotherLine.getStartingPoint().getX()) + (firstLine.getB() * anotherLine.getStartingPoint().getY()) + firstLine.getC();
-    }
-
-    double getD2(){
-//        (d2 = (a1 * v2x2) + (b1 * v2y2) + c1;
-        return (firstLine.getA() * anotherLine.getEndingPoint().getX()) + (firstLine.getB() * anotherLine.getEndingPoint().getY()) + firstLine.getC();
-    }
-
     @Override
     public String toString() {
         return "Line2LineService{" +
-                "det=" + det +
+                "\nfirstLine=" + firstLine +
+                ", \nanotherLine=" + anotherLine +
+                ", \ndet=" + det +
                 ", x=" + x +
                 ", y=" + y +
                 ", d1=" + d1 +
                 ", d2=" + d2 +
-                ", areParallel=" + areParallel +
+                ", \nparallel=" + parallel +
+                ", collinear=" + collinear +
+                ", oneintersection=" + oneintersection +
                 ", intersectionPoint=" + intersectionPoint +
-                '}';
+                "\n}";
     }
 }
