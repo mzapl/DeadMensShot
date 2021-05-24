@@ -12,9 +12,6 @@ public class Line {
     double b;
     double c;
 
-    //whatever
-    double d1, d2;
-
     public Line(Point startingPoint, Point endingPoint) {
         this.id = startingId;
         startingId++;
