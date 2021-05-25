@@ -1,6 +1,7 @@
 import Model.Line;
 import Model.Point;
 import Model.Polygon;
+import Other.TestCases;
 import Service.DrawService;
 
 import javax.swing.*;
@@ -15,27 +16,9 @@ public class DeadMensShot {
         ArrayList<Line> lines = new ArrayList<>();
 
         Scanner in = new Scanner(TestCases.getCase1());
-        int N = in.nextInt();
+        //do not forget to skip the polygon part when placing shots, since it has been moved outside
 
-        //Read point coords
-        for (int i = 0; i < N; i++) {
-            int x = in.nextInt();
-            int y = in.nextInt();
-            Point point = new Point(x, y);
-            points.add(point);
-        }
-
-        //Join points into pairs, create lines
-        for(Point point1:points){
-            for(Point point2:points){
-                if(point2.getId() == point1.getId() + 1){
-                    Line line = new Line(point1, point2);
-                    lines.add(line);
-                }
-            }
-        }lines.add(new Line(points.get(0), points.get(points.size()-1)));
-
-        Polygon polygon = new Polygon(points, lines);
+        Polygon polygon = new Polygon(TestCases.getCase1());
 
         Point shotsCorrection = incrementBelowZeros(points);
 

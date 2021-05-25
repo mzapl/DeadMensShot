@@ -1,8 +1,11 @@
 package Model;
 
+import Other.TestCases;
+
 import java.util.ArrayList;
 
 public class Polygon {
+    private int edgeCount;
     private ArrayList<Line> lines;
     private ArrayList<Point> points;
 
@@ -11,15 +14,37 @@ public class Polygon {
         this.points = points;
     }
 
+    public Polygon(String input){
+        this(TestCases.parsePoints(input));
+    }
+
     public Polygon(ArrayList<Point> points) {
+        ArrayList<Line> inputLines = new ArrayList<>();
+
+        //Join points into pairs, create lines
+        for(Point point1:points){
+            for(Point point2:points){
+                if(point2.getId() == point1.getId() + 1){
+                    Line line = new Line(point1, point2);
+                    inputLines.add(line);
+                }
+            }
+        }inputLines.add(new Line(points.get(0), points.get(points.size()-1)));
+
         this.points = points;
+        this.lines = inputLines;
+        this.edgeCount = points.size();
     }
 
     public ArrayList<Line> getLines() {
         return lines;
     }
 
-    public void setLines(ArrayList<Line> lines) {
-        this.lines = lines;
+    @Override
+    public String toString() {
+        return "Polygon{" +
+                "edgeCount=" + edgeCount +
+                ", lines=" + lines +
+                '}';
     }
 }

@@ -1,3 +1,10 @@
+package Other;
+
+import Model.Point;
+
+import java.util.ArrayList;
+import java.util.Scanner;
+
 public class TestCases {
     private static final String case1 = "4\n" +
             "-100 -100\n" +
@@ -86,5 +93,21 @@ public class TestCases {
 
     public static String getCase5() {
         return case5;
+    }
+
+    public static ArrayList<Point> parsePoints(String input){
+        ArrayList<Point> inputPoints = new ArrayList<>();
+
+        Scanner in = new Scanner(input);
+        int N = in.nextInt();
+
+        //Read point coords
+        for (int i = 0; i < N; i++) {
+            int x = in.nextInt();
+            int y = in.nextInt();
+            Point point = new Point(x, y);
+            inputPoints.add(point);
+        }
+        return inputPoints;
     }
 }

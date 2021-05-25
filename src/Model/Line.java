@@ -12,6 +12,8 @@ public class Line {
     double b;
     double c;
 
+    String equation;
+
     public Line(Point startingPoint, Point endingPoint) {
         this.id = startingId;
         startingId++;
@@ -20,6 +22,11 @@ public class Line {
         this.a = endingPoint.getY() - startingPoint.getY();
         this.b = startingPoint.getX() - endingPoint.getX();
         this.c = (endingPoint.getX() * startingPoint.getY()) - (startingPoint.getX() * endingPoint.getY());
+        this.equation = a +"x +" + b +"y +" + c +" = 0";
+    }
+
+    public int getId() {
+        return id;
     }
 
     public Point getStartingPoint() {
@@ -52,6 +59,10 @@ public class Line {
 
     public double getD2(Line anotherLine) {
         return (a * anotherLine.getEndingPoint().getX()) + (b * anotherLine.getEndingPoint().getY());
+    }
+
+    public String getEquation() {
+        return equation;
     }
 
     @Override

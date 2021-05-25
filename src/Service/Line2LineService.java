@@ -16,7 +16,8 @@ public class Line2LineService {
         this.firstLine = firstLine;
         this.anotherLine = anotherLine;
 
-        collinear = collinear();
+        this.collinear = collinear();
+        this.meet = meet();
     }
 
     boolean collinear(){
@@ -39,18 +40,34 @@ public class Line2LineService {
         return oneIntersectionPoint(firstLine, anotherLine) && oneIntersectionPoint(anotherLine, firstLine);
     }
 
+    public Line getFirstLine() {
+        return firstLine;
+    }
+
+    public void setFirstLine(Line firstLine) {
+        this.firstLine = firstLine;
+    }
+
+    public Line getAnotherLine() {
+        return anotherLine;
+    }
+
+    public void setAnotherLine(Line anotherLine) {
+        this.anotherLine = anotherLine;
+    }
+
     @Override
     public String toString() {
-        return "Line2LineService{" +
-                "\nfirstLine=" + firstLine +
-                ", \nanotherLine=" + anotherLine +
+        return "Line2LineService : " +
+                "firstLine id " + firstLine.getId() +
+                " anotherLine id " + anotherLine.getId() +
+                ", meet? = " + meet +
                 ", \nx=" + x +
                 ", y=" + y +
                 ", d1=" + d1 +
                 ", d2=" + d2 +
                 ", collinear=" + collinear +
                 ", oneintersection=" + oneintersection +
-                ", intersectionPoint=" + intersectionPoint +
-                "\n}";
+                ", intersectionPoint=" + intersectionPoint;
     }
 }
