@@ -12,6 +12,7 @@ public class Polygon {
     public Polygon(ArrayList<Point> points, ArrayList<Line> lines) {
         this.lines = lines;
         this.points = points;
+        this.edgeCount = lines.size();
     }
 
     public Polygon(String input){
@@ -38,6 +39,10 @@ public class Polygon {
 
     public ArrayList<Line> getLines() {
         return lines;
+    }
+
+    public ArrayList<Point> getPoints() {
+        return points;
     }
 
     @Override

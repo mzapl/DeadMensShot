@@ -12,13 +12,13 @@ public class DeadMensShot {
     public static void main(String []args) {
 
         //TARGET INPUT AND PROCESSING
-        ArrayList<Point> points = new ArrayList<>();
-        ArrayList<Line> lines = new ArrayList<>();
-
         Scanner in = new Scanner(TestCases.getCase1());
         //do not forget to skip the polygon part when placing shots, since it has been moved outside
 
         Polygon polygon = new Polygon(TestCases.getCase1());
+        ArrayList<Point> points = polygon.getPoints();
+        ArrayList<Line> lines = polygon.getLines();
+        System.out.println(points);
 
         Point shotsCorrection = incrementBelowZeros(points);
 
