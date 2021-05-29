@@ -1,6 +1,7 @@
 package Other;
 
 import Model.Point;
+import Service.PointService;
 
 import java.util.ArrayList;
 import java.util.Scanner;
@@ -95,6 +96,8 @@ public class TestCases {
         return case5;
     }
 
+
+    //Input strings parsing
     public static ArrayList<Point> parsePoints(String input){
         ArrayList<Point> inputPoints = new ArrayList<>();
 
@@ -108,6 +111,11 @@ public class TestCases {
             Point point = new Point(x, y);
             inputPoints.add(point);
         }
+
+        //Repositioning whole polygon to the +x+y quarter in y-inverted cartesian plane.
+        //Providing figurative point that will be used to correct the shots later
+        PointService.incrementBelowZeros(inputPoints);
+
         return inputPoints;
     }
 }

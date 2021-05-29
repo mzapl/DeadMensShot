@@ -5,7 +5,7 @@ import Model.Point;
 import Model.Polygon;
 
 public class RayService {
-    Point outsidePoint = new Point(-10000, -1000);
+    Point outsidePoint = new Point(-1, -1);
     Point testedPoint;
     Line ray;
     Polygon polygon;
@@ -22,6 +22,7 @@ public class RayService {
         Line2LineService lineService = new Line2LineService(ray, ray);
         for (Line line : polygon.getLines()) {
             lineService.setAnotherLine(line);
+            System.out.println(lineService);
             if(lineService.meet){
                 System.out.println("HUGE SUCCESS!");
                 intersections ++;

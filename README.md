@@ -15,4 +15,7 @@
     <li>
         <a href="https://stackoverflow.com/a/218081/12645536">Problem description by Mecki</a>    
     </li>
-</ul>
+    <li>
+        <a href="https://learn365project.com/2015/08/01/why-do-computer-coordinates-start-from-the-upper-left-corner/">Why computer science coordinates start from the upper left corner?</a>
+    </li>
+    </ul>

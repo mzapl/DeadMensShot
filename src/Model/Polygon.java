@@ -13,6 +13,8 @@ public class Polygon {
         this.lines = lines;
         this.points = points;
         this.edgeCount = lines.size();
+
+        debug();
     }
 
     public Polygon(String input){
@@ -35,6 +37,7 @@ public class Polygon {
         this.points = points;
         this.lines = inputLines;
         this.edgeCount = points.size();
+        debug();
     }
 
     public ArrayList<Line> getLines() {
@@ -43,6 +46,12 @@ public class Polygon {
 
     public ArrayList<Point> getPoints() {
         return points;
+    }
+
+    public void debug() {
+        System.out.println("-----debugging the polygon-----");
+        System.out.println("lines:" + lines);
+        System.out.println("points" + points);
     }
 
     @Override

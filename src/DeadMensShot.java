@@ -3,6 +3,8 @@ import Model.Point;
 import Model.Polygon;
 import Other.TestCases;
 import Service.DrawService;
+import Service.PointService;
+import Service.RayService;
 
 import javax.swing.*;
 import java.util.ArrayList;
@@ -18,9 +20,13 @@ public class DeadMensShot {
         Polygon polygon = new Polygon(TestCases.getCase1());
         ArrayList<Point> points = polygon.getPoints();
         ArrayList<Line> lines = polygon.getLines();
-        System.out.println(points);
+        RayService rayService = new RayService(polygon, new Point(250,250));
+        System.out.println(rayService);
 
-        Point shotsCorrection = incrementBelowZeros(points);
+        //Repositioning whole polygon to the +x+y quarter in y-inverted cartesian plane.
+        //Providing figurative point that will be used to correct the shots later
+        Point correctionPoint = PointService.incrementBelowZeros(points);
+        System.out.println(points);
 
         //SHOTS, INPUT AND PROCESSING
         ArrayList<Point> shots = new ArrayList<>();
@@ -28,11 +34,11 @@ public class DeadMensShot {
         for (int i = 0; i < M; i++) {
             int x = in.nextInt();
             int y = in.nextInt();
-            shots.add(new Point(x + shotsCorrection.getX(), y + shotsCorrection.getY()));
+            shots.add(new Point(x + correctionPoint.getX(), y + correctionPoint.getY()));
         }
 
-        System.out.println("Shots: " + shots);
-        myDrawer(lines, points, shots);
+//        System.out.println("Shots: " + shots);
+//        myDrawer(lines, points, shots);
     }
 
     public static void myDrawer(ArrayList<Line> lines, ArrayList<Point> points, ArrayList<Point> shots){
@@ -52,48 +58,4 @@ public class DeadMensShot {
 
         SwingUtilities.invokeLater(r);
     }
-
-    static Point incrementBelowZeros(ArrayList<Point> points){
-        double minX = minX(points);
-        double incrementX = 0;
-
-        double minY = minY(points);
-        double incrementY = 0;
-
-        if(minX < 0){
-            incrementX = -minX;
-        }
-
-        if(minY < 0){
-            incrementY = -minY;
-        }
-
-        for(Point point: points){
-            point.setX(point.getX() + incrementX);
-            point.setY(point.getY() + incrementY);
-        }
-
-        return new Point(incrementX, incrementY);
-    }
-
-    static double minX(ArrayList<Point> points){
-        double min = Integer.MAX_VALUE;
-        for (Point point: points){
-            if(point.getX() < min){
-                min = point.getX();
-            }
-        }
-        return min;
-    }
-
-    static double minY(ArrayList<Point> points){
-        double min = Integer.MAX_VALUE;
-        for (Point point: points){
-            if(point.getX() < min){
-                min = point.getY();
-            }
-        }
-        return min;
-    }
-
 }

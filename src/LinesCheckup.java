@@ -41,21 +41,20 @@ public class LinesCheckup {
         Point out = new Point(-1, -1);
         Point in = new Point(200, 200);
         Line ray = new Line(out, in);
-        System.out.println(ray.getEquation());
+//        System.out.println(ray.getEquation());
 
 
         Point edgeOne = new Point(100, -100);
         Point edgeTwo = new Point(100, 100);
         Line line = new Line(edgeOne, edgeTwo);
-        System.out.println(line.getEquation());
+//        System.out.println(line.getEquation());
 
         Line2LineService lineService = new Line2LineService(ray, line);
-        System.out.println(lineService);
 
-        System.out.println("---=----------=-----");
+        System.out.println("-------------polygon check-------------");
         Polygon polygon = new Polygon(TestCases.getCase1());
         RayService rayService = new RayService(polygon, in);
-        System.out.println(rayService.countIntersections());
+//        System.out.println(rayService.countIntersections());
 
 
 

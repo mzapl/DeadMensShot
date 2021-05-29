@@ -18,6 +18,11 @@ public class Line2LineService {
 
         this.collinear = collinear();
         this.meet = meet();
+
+        System.out.println("---for the sake of debugging---");
+        System.out.println(toString());
+        System.out.println("First line: " + firstLine);
+        System.out.println("Another line: " + anotherLine);
     }
 
     boolean collinear(){
@@ -62,11 +67,11 @@ public class Line2LineService {
                 "firstLine id " + firstLine.getId() +
                 " anotherLine id " + anotherLine.getId() +
                 ", meet? = " + meet +
-                ", \nx=" + x +
-                ", y=" + y +
-                ", d1=" + d1 +
-                ", d2=" + d2 +
-                ", collinear=" + collinear +
+//                ", \nx=" + x +
+//                ", y=" + y +
+//                ", d1=" + d1 +
+//                ", d2=" + d2 +
+                ", \ncollinear=" + collinear +
                 ", oneintersection=" + oneintersection +
                 ", intersectionPoint=" + intersectionPoint;
     }

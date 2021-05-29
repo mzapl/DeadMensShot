@@ -5,6 +5,7 @@ public class Point {
     private int id;
     private double x;
     private double y;
+    boolean inside;
 
     public Point(double x, double y) {
         this.id = startingId;
@@ -31,6 +32,14 @@ public class Point {
 
     public void setY(double y) {
         this.y = y;
+    }
+
+    public boolean isInside() {
+        return inside;
+    }
+
+    public void setInside(boolean inside) {
+        this.inside = inside;
     }
 
     @Override
