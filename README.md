@@ -1,4 +1,5 @@
 # DeadMensShot
+<p>My solution for codingame puzzle</p>
 <img src="https://mathworld.wolfram.com/images/eps-gif/PolygonUnfilled_1000.gif">
 
 <ul>
