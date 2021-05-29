@@ -14,12 +14,14 @@ public class DrawService extends JComponent {
 
     ArrayList<Line2D.Double> lines;
     ArrayList<Point2D.Double> points;
+    ArrayList<Point2D.Double> shots;
 
     public DrawService(int width, int height) {
         super();
         setPreferredSize(new Dimension(width,height));
         lines = new ArrayList<Line2D.Double>();
         points = new ArrayList<Point2D.Double>();
+        shots = new ArrayList<Point2D.Double>();
     }
 
     public void addLine(Line line) {
@@ -30,11 +32,37 @@ public class DrawService extends JComponent {
         repaint();
     }
 
+    public void addLines(ArrayList<Line> lines){
+        for(Line line:lines){
+            addLine(line);
+        }
+
+    }
+
     public void addPoint(Point point) {
         Point2D.Double point2D = new Point2D.Double(point.getX(), point.getY());
         points.add(point2D);
         repaint();
     }
+
+    public void addPoints(ArrayList<Point> points){
+        for(Point point:points){
+            addPoint(point);
+        }
+    }
+
+    public void addShot(Point point) {
+        Point2D.Double point2D = new Point2D.Double(point.getX(), point.getY());
+        shots.add(point2D);
+        repaint();
+    }
+
+    public void addShots(ArrayList<Point> shots){
+        for(Point shot:shots){
+            addShot(shot);
+        }
+    }
+
 
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
@@ -52,7 +80,12 @@ public class DrawService extends JComponent {
         }
 
         for (Point2D.Double point : points){
-            g.drawOval((int)point.getX(), (int)point.getY(), 5, 5);
+            g.drawOval((int)point.getX(), (int)point.getY(), 1, 1);
+        }
+
+        g.setColor(Color.red);
+        for (Point2D.Double shot : shots){
+            g.drawOval((int)shot.getX(), (int)shot.getY(), 5, 5);
         }
     }
 }

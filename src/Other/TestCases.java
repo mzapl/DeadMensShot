@@ -2,11 +2,13 @@ package Other;
 
 import Model.Point;
 import Service.PointService;
-
 import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TestCases {
+    static ArrayList<Point> points = new ArrayList<>();
+    static ArrayList<Point> shots = new ArrayList<>();
+
     private static final String case1 = "4\n" +
             "-100 -100\n" +
             "100 -100\n" +
@@ -18,6 +20,7 @@ public class TestCases {
             "101 101\n" +
             "80 -101\n" +
             "0 -100";
+
 
     private static final String case2 = "3\n" +
             "0 0\n" +
@@ -96,11 +99,16 @@ public class TestCases {
         return case5;
     }
 
+    public static ArrayList<Point> getPoints() {
+        return points;
+    }
 
-    //Input strings parsing
-    public static ArrayList<Point> parsePoints(String input){
-        ArrayList<Point> inputPoints = new ArrayList<>();
+    public static ArrayList<Point> getShots() {
+        return shots;
+    }
 
+    //Polygon points parsing
+    public static void parsePoints(String input){
         Scanner in = new Scanner(input);
         int N = in.nextInt();
 
@@ -109,13 +117,26 @@ public class TestCases {
             int x = in.nextInt();
             int y = in.nextInt();
             Point point = new Point(x, y);
-            inputPoints.add(point);
+            points.add(point);
         }
 
         //Repositioning whole polygon to the +x+y quarter in y-inverted cartesian plane.
         //Providing figurative point that will be used to correct the shots later
-        PointService.incrementBelowZeros(inputPoints);
+        PointService.incrementBelowZeros(points);
 
-        return inputPoints;
+        //Returning back the
+        parseShots(in);
+    }
+
+    //Shots (points) parsing
+    public static void parseShots(Scanner in){
+        int M = in.nextInt();
+        for (int i = 0; i < M; i++) {
+            int x = in.nextInt();
+            int y = in.nextInt();
+            shots.add(new Point(
+                    x + PointService.getCorrectionPoint().getX(),
+                    y + PointService.getCorrectionPoint().getY()));
+        }
     }
 }

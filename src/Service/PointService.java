@@ -5,6 +5,7 @@ import Model.Point;
 import java.util.ArrayList;
 
 public class PointService {
+    static Point correctionPoint = new Point(0, 0);
 
     public PointService(){}
 
@@ -28,6 +29,8 @@ public class PointService {
             point.setY(point.getY() + incrementY);
         }
 
+        correctionPoint = new Point(incrementX, incrementY);
+
         return new Point(incrementX, incrementY);
     }
 
@@ -50,4 +53,9 @@ public class PointService {
         }
         return min;
     }
+
+    public static Point getCorrectionPoint() {
+        return correctionPoint;
+    }
+
 }

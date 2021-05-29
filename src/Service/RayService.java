@@ -16,6 +16,7 @@ public class RayService {
         this.ray = new Line(outsidePoint, testedPoint);
         this.polygon = polygon;
         this.intersections = countIntersections();
+        toString();
     }
 
     public int countIntersections(){

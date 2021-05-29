@@ -1,6 +1,7 @@
 package Model;
 
 import Other.TestCases;
+import Service.PointService;
 
 import java.util.ArrayList;
 
@@ -15,10 +16,6 @@ public class Polygon {
         this.edgeCount = lines.size();
 
         debug();
-    }
-
-    public Polygon(String input){
-        this(TestCases.parsePoints(input));
     }
 
     public Polygon(ArrayList<Point> points) {
