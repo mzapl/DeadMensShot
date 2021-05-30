@@ -29,7 +29,7 @@ public class Polygon {
                     inputLines.add(line);
                 }
             }
-        }inputLines.add(new Line(points.get(0), points.get(points.size()-1)));
+        }inputLines.add(new Line(points.get(points.size()-1), points.get(0)));
 
         this.points = points;
         this.lines = inputLines;

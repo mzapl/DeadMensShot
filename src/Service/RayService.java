@@ -5,7 +5,7 @@ import Model.Point;
 import Model.Polygon;
 
 public class RayService {
-    Point outsidePoint = new Point(-1, -1);
+    Point outsidePoint = new Point(-100, 40);
     Point testedPoint;
     Line ray;
     Polygon polygon;
@@ -30,6 +30,10 @@ public class RayService {
             }
         }
         return intersections;
+    }
+
+    public Line getRay() {
+        return ray;
     }
 
     @Override

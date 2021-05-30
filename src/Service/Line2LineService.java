@@ -19,10 +19,10 @@ public class Line2LineService {
         this.collinear = collinear();
         this.meet = meet();
 
-        System.out.println("---for the sake of debugging---");
-        System.out.println(toString());
-        System.out.println("First line: " + firstLine);
-        System.out.println("Another line: " + anotherLine);
+//        System.out.println("---for the sake of debugging---");
+//        System.out.println(toString());
+//        System.out.println("First line: " + firstLine);
+//        System.out.println("Another line: " + anotherLine);
     }
 
     boolean collinear(){
@@ -51,6 +51,7 @@ public class Line2LineService {
 
     public void setFirstLine(Line firstLine) {
         this.firstLine = firstLine;
+        recalculate();
     }
 
     public Line getAnotherLine() {
@@ -59,6 +60,12 @@ public class Line2LineService {
 
     public void setAnotherLine(Line anotherLine) {
         this.anotherLine = anotherLine;
+        recalculate();
+    }
+
+    public void recalculate(){
+        this.collinear = collinear();
+        this.meet = meet();
     }
 
     @Override

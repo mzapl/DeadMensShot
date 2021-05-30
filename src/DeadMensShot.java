@@ -20,13 +20,18 @@ public class DeadMensShot {
         Polygon polygon = new Polygon(points);
         ArrayList<Line> lines = polygon.getLines();
 
-        myDrawer(lines, points, shots);
+        RayService rayService = new RayService(polygon, new Point(100,100));
+        ArrayList<Line> rays = new ArrayList<>();
+        rays.add(rayService.getRay());
+
+        myDrawer(rays, lines, points, shots);
     }
 
-    public static void myDrawer(ArrayList<Line> lines, ArrayList<Point> points, ArrayList<Point> shots){
+    public static void myDrawer(ArrayList<Line> rays, ArrayList<Line> lines, ArrayList<Point> points, ArrayList<Point> shots){
         Runnable r = new Runnable() {
             public void run() {
                 DrawService drawService = new DrawService(500,500);
+                drawService.addRays(rays);
                 drawService.addLines(lines);
                 drawService.addPoints(points);
                 drawService.addShots(shots);

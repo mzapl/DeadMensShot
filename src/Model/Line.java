@@ -67,7 +67,7 @@ public class Line {
 
     @Override
     public String toString() {
-        return "Line{" +
+        return "Line"+ id + "{" +
                 "startingPoint=" + startingPoint +
                 ", endingPoint=" + endingPoint +
                 ", equation: " + a +"x +" + b +"y +" + c +" = 0"+

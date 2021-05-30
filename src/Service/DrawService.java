@@ -11,7 +11,7 @@ import java.util.ArrayList;
 
 public class DrawService extends JComponent {
 
-
+    ArrayList<Line2D.Double> rays;
     ArrayList<Line2D.Double> lines;
     ArrayList<Point2D.Double> points;
     ArrayList<Point2D.Double> shots;
@@ -19,9 +19,22 @@ public class DrawService extends JComponent {
     public DrawService(int width, int height) {
         super();
         setPreferredSize(new Dimension(width,height));
+        rays = new ArrayList<Line2D.Double>();
         lines = new ArrayList<Line2D.Double>();
         points = new ArrayList<Point2D.Double>();
         shots = new ArrayList<Point2D.Double>();
+    }
+
+    public void addRay(Line ray) {
+        Line2D.Double line2d = new Line2D.Double(ray.getStartingPoint().getX(), ray.getStartingPoint().getY(), ray.getEndingPoint().getX(), ray.getEndingPoint().getY());
+        lines.add(line2d);
+        repaint();
+    }
+
+    public void addRays(ArrayList<Line> rays){
+        for(Line ray:rays){
+            addLine(ray);
+        }
     }
 
     public void addLine(Line line) {
@@ -36,7 +49,6 @@ public class DrawService extends JComponent {
         for(Line line:lines){
             addLine(line);
         }
-
     }
 
     public void addPoint(Point point) {
@@ -62,6 +74,8 @@ public class DrawService extends JComponent {
             addShot(shot);
         }
     }
+
+
 
 
     public void paintComponent(Graphics g) {
