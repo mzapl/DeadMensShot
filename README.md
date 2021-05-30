@@ -1,10 +1,11 @@
 # DeadMensShot
-<p>My solution for codingame puzzle</p>
+<p>My solution for codingame puzzle.</p>
+<p>as a bonus draws given polygon, inner and outer points, as well as rays</p>
 <img src="https://mathworld.wolfram.com/images/eps-gif/PolygonUnfilled_1000.gif">
 
 <ul>
     <li>
-        <a href="https://www.codingame.com/ide/puzzle/dead-mens-shot">Puzzle</a>
+        <a href="https://www.codingame.com/ide/puzzle/dead-mens-shot">Puzzle description</a>
     </li>
     <li>
         <a href="https://en.wikipedia.org/wiki/Point_in_polygon">Point in polygon wiki</a>

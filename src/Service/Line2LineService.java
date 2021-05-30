@@ -9,7 +9,7 @@ public class Line2LineService {
     double x, y;
     double d1, d2;
 
-    boolean collinear, oneintersection, meet;
+    boolean collinear, intersect, meet;
     Point intersectionPoint;
 
     public Line2LineService(Line firstLine, Line anotherLine) {
@@ -29,7 +29,7 @@ public class Line2LineService {
         return ((firstLine.getA() * anotherLine.getB()) - (anotherLine.getA() * firstLine.getB()) == 0.0);
     }
 
-    public boolean oneIntersectionPoint(Line firstLine, Line anotherLine){
+    public boolean intersect(Line firstLine, Line anotherLine){
         if ((firstLine.getD1(anotherLine) > 0) && (firstLine.getD2(anotherLine) > 0)){
             return false;
         }
@@ -42,7 +42,7 @@ public class Line2LineService {
     }
 
     public boolean meet(){
-        return oneIntersectionPoint(firstLine, anotherLine) && oneIntersectionPoint(anotherLine, firstLine);
+        return intersect(firstLine, anotherLine) && intersect(anotherLine, firstLine);
     }
 
     public Line getFirstLine() {
@@ -64,13 +64,14 @@ public class Line2LineService {
     }
 
     public void recalculate(){
+        this.intersect = intersect(firstLine, anotherLine) || intersect(anotherLine, firstLine);
         this.collinear = collinear();
         this.meet = meet();
     }
 
     @Override
     public String toString() {
-        return "Line2LineService : " +
+        return "\n-------------- Line2LineService --------------\n" +
                 "firstLine id " + firstLine.getId() +
                 " anotherLine id " + anotherLine.getId() +
                 ", meet? = " + meet +
@@ -79,7 +80,8 @@ public class Line2LineService {
 //                ", d1=" + d1 +
 //                ", d2=" + d2 +
                 ", \ncollinear=" + collinear +
-                ", oneintersection=" + oneintersection +
-                ", intersectionPoint=" + intersectionPoint;
+                ", intersection=" + intersect +
+                ", intersectionPoint=" + intersectionPoint+
+                "\n-------------------- end ------------------------- ";
     }
 }

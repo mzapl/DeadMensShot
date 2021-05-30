@@ -27,13 +27,13 @@ public class DrawService extends JComponent {
 
     public void addRay(Line ray) {
         Line2D.Double line2d = new Line2D.Double(ray.getStartingPoint().getX(), ray.getStartingPoint().getY(), ray.getEndingPoint().getX(), ray.getEndingPoint().getY());
-        lines.add(line2d);
+        rays.add(line2d);
         repaint();
     }
 
     public void addRays(ArrayList<Line> rays){
         for(Line ray:rays){
-            addLine(ray);
+            addRay(ray);
         }
     }
 
@@ -76,14 +76,14 @@ public class DrawService extends JComponent {
     }
 
 
-
-
     public void paintComponent(Graphics g) {
         super.paintComponent(g);
         g.setColor(Color.white);
         g.fillRect(0, 0, getWidth(), getHeight());
         Dimension d = getPreferredSize();
         g.setColor(Color.black);
+
+        //Draw sides of given polygon
         for (Line2D.Double line : lines) {
             g.drawLine(
                     (int)line.getX1(),
@@ -93,8 +93,19 @@ public class DrawService extends JComponent {
             );
         }
 
+        //Draw points (connecting edges of the polygon) for further removal
         for (Point2D.Double point : points){
             g.drawOval((int)point.getX(), (int)point.getY(), 1, 1);
+        }
+
+        //Draw all of the rays
+        for (Line2D.Double ray : rays) {
+            g.drawLine(
+                    (int)ray.getX1(),
+                    (int)ray.getY1(),
+                    (int)ray.getX2(),
+                    (int)ray.getY2()
+            );
         }
 
         g.setColor(Color.red);

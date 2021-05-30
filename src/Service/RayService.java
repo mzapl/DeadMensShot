@@ -4,9 +4,12 @@ import Model.Line;
 import Model.Point;
 import Model.Polygon;
 
+import java.util.ArrayList;
+
 public class RayService {
-    Point outsidePoint = new Point(-100, 40);
+    Point outsidePoint = new Point(-100, 20);
     Point testedPoint;
+    static ArrayList<Line> rays = new ArrayList<Line>();
     Line ray;
     Polygon polygon;
     int intersections = 0;
@@ -16,6 +19,7 @@ public class RayService {
         this.ray = new Line(outsidePoint, testedPoint);
         this.polygon = polygon;
         this.intersections = countIntersections();
+        addRay(ray);
         toString();
     }
 
@@ -25,15 +29,22 @@ public class RayService {
             lineService.setAnotherLine(line);
             System.out.println(lineService);
             if(lineService.meet){
-                System.out.println("HUGE SUCCESS!");
                 intersections ++;
             }
         }
         return intersections;
     }
 
+    private void addRay(Line ray){
+        rays.add(ray);
+    }
+
     public Line getRay() {
         return ray;
+    }
+
+    public static ArrayList<Line> getRays() {
+        return rays;
     }
 
     @Override

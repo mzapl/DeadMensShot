@@ -20,9 +20,10 @@ public class DeadMensShot {
         Polygon polygon = new Polygon(points);
         ArrayList<Line> lines = polygon.getLines();
 
-        RayService rayService = new RayService(polygon, new Point(100,100));
-        ArrayList<Line> rays = new ArrayList<>();
-        rays.add(rayService.getRay());
+        RayService rayService = new RayService(polygon, new Point(300,300));
+        ArrayList<Line> rays = RayService.getRays();
+        RayService rayService2 = new RayService(polygon, new Point(100, 100));
+        System.out.println("Have i collected any rays???" + rays.size());
 
         myDrawer(rays, lines, points, shots);
     }
