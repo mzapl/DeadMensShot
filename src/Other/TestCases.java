@@ -9,6 +9,23 @@ public class TestCases {
     static ArrayList<Point> points = new ArrayList<>();
     static ArrayList<Point> shots = new ArrayList<>();
 
+    private static final String case0 = "2\n" +
+            "100 100\n" +
+            "100 -100\n" +
+            "3\n" +
+            "200 200\n" +
+            "50 50\n" +
+            "200 50";
+
+
+    private static final String case01 = "4\n" +
+            "-100 -100\n" +
+            "100 -100\n" +
+            "100 100\n" +
+            "-100 100\n" +
+            "1\n" +
+            "50 50\n";
+
     private static final String case1 = "4\n" +
             "-100 -100\n" +
             "100 -100\n" +
@@ -79,6 +96,14 @@ public class TestCases {
             "200 100\n" +
             "175 60";
 
+    public static String getCase0() {
+        return case0;
+    }
+
+    public static String getCase01() {
+        return case01;
+    }
+
     public static String getCase1() {
         return case1;
     }
@@ -106,6 +131,8 @@ public class TestCases {
     public static ArrayList<Point> getShots() {
         return shots;
     }
+
+
 
     //Polygon points parsing
     public static void parsePoints(String input){

@@ -6,7 +6,6 @@ import java.util.ArrayList;
 
 public class PointService {
     static Point correctionPoint = new Point(0, 0);
-
     public PointService(){}
 
     public static Point incrementBelowZeros(ArrayList<Point> points){

@@ -5,7 +5,6 @@ public class Line {
     int id;
     Point startingPoint;
     Point endingPoint;
-    Point middlePoint;
 
     //equation standard form: A*x + B*y + C = 0
     double a;
@@ -37,9 +36,6 @@ public class Line {
         return endingPoint;
     }
 
-    public Point getMiddlePoint() {
-        return middlePoint;
-    }
 
     public double getA() {
         return a;
@@ -54,11 +50,15 @@ public class Line {
     }
 
     public double getD1(Line anotherLine) {
-        return (a * anotherLine.getStartingPoint().getX()) + (b * anotherLine.getStartingPoint().getY());
+        double D1 = (a * anotherLine.getStartingPoint().getX()) + (b * anotherLine.getStartingPoint().getY());
+        System.out.println("zwracam D1");
+        return D1;
     }
 
     public double getD2(Line anotherLine) {
-        return (a * anotherLine.getEndingPoint().getX()) + (b * anotherLine.getEndingPoint().getY());
+        double D2 = (a * anotherLine.getEndingPoint().getX()) + (b * anotherLine.getEndingPoint().getY());
+        System.out.println("zwracam D2");
+        return D2;
     }
 
     public String getEquation() {

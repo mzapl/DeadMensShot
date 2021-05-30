@@ -2,6 +2,7 @@ package Service;
 
 import Model.Line;
 import Model.Point;
+import Model.Ray;
 
 import javax.swing.*;
 import java.awt.*;
@@ -31,8 +32,8 @@ public class DrawService extends JComponent {
         repaint();
     }
 
-    public void addRays(ArrayList<Line> rays){
-        for(Line ray:rays){
+    public void addRays(ArrayList<Ray> rays){
+        for(Ray ray:rays){
             addRay(ray);
         }
     }

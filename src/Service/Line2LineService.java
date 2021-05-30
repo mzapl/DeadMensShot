@@ -2,8 +2,12 @@ package Service;
 
 import Model.Line;
 import Model.Point;
+import Model.Ray;
+
+import java.util.ArrayList;
 
 public class Line2LineService {
+    Ray ray;
     Line firstLine;
     Line anotherLine;
     double x, y;
@@ -11,6 +15,11 @@ public class Line2LineService {
 
     boolean collinear, intersect, meet;
     Point intersectionPoint;
+
+    public Line2LineService(Ray ray){
+        firstLine = new Line(ray.getStartingPoint(), ray.getEndingPoint());
+        this.ray = ray;
+    }
 
     public Line2LineService(Line firstLine, Line anotherLine) {
         this.firstLine = firstLine;
@@ -42,6 +51,7 @@ public class Line2LineService {
     }
 
     public boolean meet(){
+        System.out.println(intersect(firstLine, anotherLine) +" "+ intersect(anotherLine, firstLine));
         return intersect(firstLine, anotherLine) && intersect(anotherLine, firstLine);
     }
 
@@ -69,9 +79,14 @@ public class Line2LineService {
         this.meet = meet();
     }
 
+    public void info(){
+        System.out.println(firstLine.getId());
+        System.out.println(anotherLine.getId());
+    }
+
     @Override
     public String toString() {
-        return "\n-------------- Line2LineService --------------\n" +
+        return "\n-- Line2LineService --\n" +
                 "firstLine id " + firstLine.getId() +
                 " anotherLine id " + anotherLine.getId() +
                 ", meet? = " + meet +
@@ -82,6 +97,6 @@ public class Line2LineService {
                 ", \ncollinear=" + collinear +
                 ", intersection=" + intersect +
                 ", intersectionPoint=" + intersectionPoint+
-                "\n-------------------- end ------------------------- ";
+                "\n-- end -- ";
     }
 }
