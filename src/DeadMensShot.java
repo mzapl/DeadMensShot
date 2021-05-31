@@ -32,6 +32,8 @@ public class DeadMensShot {
             System.out.println(ray);
         }
 
+        System.out.println(polygon.getSize());
+        //turn off the canvas while not needed
         myDrawer(rays, lines, points, shots);
     }
 
