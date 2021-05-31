@@ -4,12 +4,9 @@ import Model.Line;
 import Model.Point;
 import Model.Ray;
 
-import java.util.ArrayList;
-
 public class Line2LineService {
     Ray ray;
-    Line firstLine;
-    Line anotherLine;
+    Line line;
     double x, y;
     double d1, d2;
 
@@ -17,33 +14,19 @@ public class Line2LineService {
     Point intersectionPoint;
 
     public Line2LineService(Ray ray){
-        firstLine = new Line(ray.getStartingPoint(), ray.getEndingPoint());
         this.ray = ray;
     }
 
-    public Line2LineService(Line firstLine, Line anotherLine) {
-        this.firstLine = firstLine;
-        this.anotherLine = anotherLine;
-
-        this.collinear = collinear();
-        this.meet = meet();
-
-//        System.out.println("---for the sake of debugging---");
-//        System.out.println(toString());
-//        System.out.println("First line: " + firstLine);
-//        System.out.println("Another line: " + anotherLine);
-    }
-
     boolean collinear(){
-        return ((firstLine.getA() * anotherLine.getB()) - (anotherLine.getA() * firstLine.getB()) == 0.0);
+        return ((ray.getA() * line.getB()) - (line.getA() * ray.getB()) == 0.0);
     }
 
-    public boolean intersect(Line firstLine, Line anotherLine){
-        if ((firstLine.getD1(anotherLine) > 0) && (firstLine.getD2(anotherLine) > 0)){
+    public boolean intersect(Line ray, Line line){
+        if ((ray.getD1(line) > 0) && (ray.getD2(line) > 0)){
             return false;
         }
 
-        if ((firstLine.getD1(anotherLine) < 0) && (firstLine.getD2(anotherLine) < 0)){
+        if ((ray.getD1(line) < 0) && (ray.getD2(line) < 0)){
             return false;
         }
 
@@ -51,44 +34,47 @@ public class Line2LineService {
     }
 
     public boolean meet(){
-        System.out.println(intersect(firstLine, anotherLine) +" "+ intersect(anotherLine, firstLine));
-        return intersect(firstLine, anotherLine) && intersect(anotherLine, firstLine);
+        System.out.println("---------Are the lines meeting??---------");
+        System.out.print("line" + ray.getId()+" and line" + line.getId()+"          ");
+        System.out.println(intersect(ray, line) && intersect(line, ray));
+        System.out.println("specifically??           " + intersect(ray, line)+" and "+ intersect(line, ray));
+        return (intersect(ray, line) && intersect(line, ray));
     }
 
-    public Line getFirstLine() {
-        return firstLine;
+    public Line getray() {
+        return ray;
     }
 
-    public void setFirstLine(Line firstLine) {
-        this.firstLine = firstLine;
+    public void setray(Ray ray) {
+        this.ray = ray;
         recalculate();
     }
 
-    public Line getAnotherLine() {
-        return anotherLine;
+    public Line getline() {
+        return line;
     }
 
-    public void setAnotherLine(Line anotherLine) {
-        this.anotherLine = anotherLine;
+    public void setline(Line line) {
+        this.line = line;
         recalculate();
     }
 
     public void recalculate(){
-        this.intersect = intersect(firstLine, anotherLine) || intersect(anotherLine, firstLine);
+        this.intersect = intersect(ray, line) || intersect(line, ray);
         this.collinear = collinear();
         this.meet = meet();
     }
 
     public void info(){
-        System.out.println(firstLine.getId());
-        System.out.println(anotherLine.getId());
+        System.out.println(ray.getId());
+        System.out.println(line.getId());
     }
 
     @Override
     public String toString() {
         return "\n-- Line2LineService --\n" +
-                "firstLine id " + firstLine.getId() +
-                " anotherLine id " + anotherLine.getId() +
+                "ray id " + ray.getId() +
+                " line id " + line.getId() +
                 ", meet? = " + meet +
 //                ", \nx=" + x +
 //                ", y=" + y +

@@ -22,6 +22,7 @@ public class Line {
         this.b = startingPoint.getX() - endingPoint.getX();
         this.c = (endingPoint.getX() * startingPoint.getY()) - (startingPoint.getX() * endingPoint.getY());
         this.equation = a +"x +" + b +"y +" + c +" = 0";
+        System.out.println("Line"+ this.id +" created. Equation: "+equation);
     }
 
     public int getId() {
@@ -51,13 +52,11 @@ public class Line {
 
     public double getD1(Line anotherLine) {
         double D1 = (a * anotherLine.getStartingPoint().getX()) + (b * anotherLine.getStartingPoint().getY());
-        System.out.println("zwracam D1");
         return D1;
     }
 
     public double getD2(Line anotherLine) {
         double D2 = (a * anotherLine.getEndingPoint().getX()) + (b * anotherLine.getEndingPoint().getY());
-        System.out.println("zwracam D2");
         return D2;
     }
 

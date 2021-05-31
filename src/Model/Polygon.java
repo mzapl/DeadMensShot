@@ -19,7 +19,6 @@ public class Polygon {
                 }
             }
         }inputLines.add(new Line(points.get(points.size()-1), points.get(0)));
-
         this.points = points;
         this.lines = inputLines;
         this.edgeCount = points.size();

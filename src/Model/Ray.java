@@ -17,7 +17,6 @@ public class Ray extends Line{
     }
 
     public void newIntersection(){
-        System.out.println("incrementing intersections");
         intersections ++;
     }
 

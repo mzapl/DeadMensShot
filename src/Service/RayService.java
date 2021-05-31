@@ -35,7 +35,7 @@ public class RayService {
     public void countIntersections(Ray ray){
         Line2LineService line2LineService = new Line2LineService(ray);
         for(Line line: polygon.getLines()){
-            line2LineService.setAnotherLine(line);
+            line2LineService.setline(line);
             if(line2LineService.meet){
                 ray.newIntersection();
             }
@@ -46,7 +46,6 @@ public class RayService {
         this.testedPoint = testedPoint;
         castRay(testedPoint);
         countIntersections(ray);
-        System.out.println("siema tutaj ray, mam tyle intersekcji" + ray.getIntersections());
         addRay(ray);
     }
 
