@@ -51,12 +51,12 @@ public class Line {
     }
 
     public double getD1(Line anotherLine) {
-        double D1 = (a * anotherLine.getStartingPoint().getX()) + (b * anotherLine.getStartingPoint().getY());
+        double D1 = (a * anotherLine.getStartingPoint().getX()) + (b * anotherLine.getStartingPoint().getY()) + c;
         return D1;
     }
 
     public double getD2(Line anotherLine) {
-        double D2 = (a * anotherLine.getEndingPoint().getX()) + (b * anotherLine.getEndingPoint().getY());
+        double D2 = (a * anotherLine.getEndingPoint().getX()) + (b * anotherLine.getEndingPoint().getY()) + c;
         return D2;
     }
 

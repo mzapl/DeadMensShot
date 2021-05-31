@@ -7,8 +7,6 @@ import Model.Ray;
 public class Line2LineService {
     Ray ray;
     Line line;
-    double x, y;
-    double d1, d2;
 
     boolean collinear, intersect, meet;
     Point intersectionPoint;
@@ -37,7 +35,7 @@ public class Line2LineService {
         System.out.println("---------Are the lines meeting??---------");
         System.out.print("line" + ray.getId()+" and line" + line.getId()+"          ");
         System.out.println(intersect(ray, line) && intersect(line, ray));
-        System.out.println("specifically??           " + intersect(ray, line)+" and "+ intersect(line, ray));
+        System.out.println("specifically??            " + intersect(ray, line)+" and "+ intersect(line, ray));
         return (intersect(ray, line) && intersect(line, ray));
     }
 
@@ -76,10 +74,6 @@ public class Line2LineService {
                 "ray id " + ray.getId() +
                 " line id " + line.getId() +
                 ", meet? = " + meet +
-//                ", \nx=" + x +
-//                ", y=" + y +
-//                ", d1=" + d1 +
-//                ", d2=" + d2 +
                 ", \ncollinear=" + collinear +
                 ", intersection=" + intersect +
                 ", intersectionPoint=" + intersectionPoint+

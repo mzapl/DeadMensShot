@@ -132,8 +132,6 @@ public class TestCases {
         return shots;
     }
 
-
-
     //Polygon points parsing
     public static void parsePoints(String input){
         Scanner in = new Scanner(input);
@@ -151,7 +149,7 @@ public class TestCases {
         //Providing figurative point that will be used to correct the shots later
         PointService.incrementBelowZeros(points);
 
-        //Returning back the
+        //Returning back the scanner
         parseShots(in);
     }
 

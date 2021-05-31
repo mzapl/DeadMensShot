@@ -14,7 +14,7 @@ import java.util.Scanner;
 public class DeadMensShot {
     public static void main(String []args) {
 
-        TestCases.parsePoints(TestCases.getCase01());
+        TestCases.parsePoints(TestCases.getCase5());
         ArrayList<Point> points = TestCases.getPoints();
         ArrayList<Point> shots = TestCases.getShots();
 
