@@ -32,11 +32,14 @@ public class Line2LineService {
     }
 
     public boolean meet(){
+        return (intersect(ray, line) && intersect(line, ray));
+    }
+
+    public void meetPrints(){
         System.out.println("---------Are the lines meeting??---------");
         System.out.print("line" + ray.getId()+" and line" + line.getId()+"          ");
         System.out.println(intersect(ray, line) && intersect(line, ray));
         System.out.println("specifically??            " + intersect(ray, line)+" and "+ intersect(line, ray));
-        return (intersect(ray, line) && intersect(line, ray));
     }
 
     public Line getray() {

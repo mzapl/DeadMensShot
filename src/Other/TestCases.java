@@ -2,6 +2,7 @@ package Other;
 
 import Model.Point;
 import Service.PointService;
+
 import java.util.ArrayList;
 import java.util.Scanner;
 

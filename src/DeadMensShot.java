@@ -4,12 +4,10 @@ import Model.Polygon;
 import Model.Ray;
 import Other.TestCases;
 import Service.DrawService;
-import Service.PointService;
 import Service.RayService;
 
 import javax.swing.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class DeadMensShot {
     public static void main(String []args) {
@@ -27,13 +25,17 @@ public class DeadMensShot {
             rayService.cast(shot);
         }
 
-        ArrayList<Ray> rays = RayService.getRays();
+        //printing the hit or miss for each shot
+        ArrayList<Ray> rays = rayService.getRays();
         for(Ray ray:rays){
-            System.out.println(ray);
+            if(ray.getIntersections() % 2 == 1){
+                System.out.println("hit");
+            }else {
+                System.out.println("miss");
+            }
         }
 
-        System.out.println(polygon.getSize());
-        //turn off the canvas while not needed
+//        System.out.println(polygon.getSize());
         myDrawer(rays, lines, points, shots);
     }
 

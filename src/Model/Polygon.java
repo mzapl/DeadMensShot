@@ -2,14 +2,13 @@ package Model;
 
 import java.util.ArrayList;
 import java.util.Comparator;
-import java.util.Optional;
 
 public class Polygon {
     private final int edgeCount;
     private final ArrayList<Line> lines;
     private final ArrayList<Point> points;
-//    private final int width;
-//    private final int height;
+    private double height = 0;
+    private double width = 0;
 
     public Polygon(ArrayList<Point> points) {
         ArrayList<Line> inputLines = new ArrayList<>();
@@ -26,7 +25,6 @@ public class Polygon {
         this.points = points;
         this.lines = inputLines;
         this.edgeCount = points.size();
-//        debug();
     }
 
     public ArrayList<Line> getLines() {
@@ -37,19 +35,14 @@ public class Polygon {
         return points;
     }
 
-    public Double getSize(){
+    public void getSize(){
         double minx = points.stream().min(Comparator.comparingDouble(point -> point.getX())).get().getX();
         double maxx = points.stream().max(Comparator.comparingDouble(point -> point.getX())).get().getX();
         double miny = points.stream().min(Comparator.comparingDouble(point -> point.getY())).get().getY();
         double maxy = points.stream().max(Comparator.comparingDouble(point -> point.getY())).get().getY();
         System.out.println("The size would be:" + (maxx-minx) + " x " + (maxy-miny));
-        return 1d;
-    }
-
-    public void debug() {
-        System.out.println("-----debugging the polygon-----");
-        System.out.println("lines:" + lines);
-        System.out.println("points" + points);
+        width = (maxx - minx);
+        height = (maxy - miny);
     }
 
     @Override

@@ -8,7 +8,7 @@ public class PointService {
     static Point correctionPoint = new Point(0, 0);
     public PointService(){}
 
-    public static Point incrementBelowZeros(ArrayList<Point> points){
+    public static void incrementBelowZeros(ArrayList<Point> points){
         double minX = minX(points);
         double incrementX = 0;
 
@@ -29,8 +29,6 @@ public class PointService {
         }
 
         correctionPoint = new Point(incrementX, incrementY);
-
-        return new Point(incrementX, incrementY);
     }
 
     static double minX(ArrayList<Point> points){

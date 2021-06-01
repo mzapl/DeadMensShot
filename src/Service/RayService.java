@@ -19,19 +19,6 @@ public class RayService {
         this.polygon = polygon;
     }
 
-    //Old countintersections function, i will attempt to implement new one
-//    public void countIntersections(Ray ray){
-//        Line2LineService lineService = new Line2LineService(ray, ray);
-//        System.out.println("---------------------Rayservice: ------------------------");
-//        for (Line line : polygon.getLines()) {
-//            lineService.setAnotherLine(line);
-//            if(lineService.meet){
-//                lineService.info();
-//                ray.newIntersection();
-//            }
-//        }
-//    }
-
     public void countIntersections(Ray ray){
         Line2LineService line2LineService = new Line2LineService(ray);
         for(Line line: polygon.getLines()){
@@ -61,7 +48,7 @@ public class RayService {
         return ray;
     }
 
-    public static ArrayList<Ray> getRays() {
+    public ArrayList<Ray> getRays() {
         return rays;
     }
 
