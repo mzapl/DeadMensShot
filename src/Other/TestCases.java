@@ -134,8 +134,7 @@ public class TestCases {
     }
 
     //Polygon points parsing
-    public static void parsePoints(String input){
-        Scanner in = new Scanner(input);
+    public static void parsePoints(Scanner in){
         int N = in.nextInt();
 
         //Read point coords

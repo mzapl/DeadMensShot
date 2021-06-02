@@ -8,11 +8,12 @@ import Service.RayService;
 
 import javax.swing.*;
 import java.util.ArrayList;
+import java.util.Scanner;
 
 public class DeadMensShot {
     public static void main(String []args) {
-
-        TestCases.parsePoints(TestCases.getCase5());
+        Scanner input = new Scanner(System.in);
+        TestCases.parsePoints(input);
         ArrayList<Point> points = TestCases.getPoints();
         ArrayList<Point> shots = TestCases.getShots();
 
