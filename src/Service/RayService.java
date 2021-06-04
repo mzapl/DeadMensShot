@@ -33,6 +33,9 @@ public class RayService {
         this.testedPoint = testedPoint;
         castRay(testedPoint);
         countIntersections(ray);
+        if(ray.getIntersections() % 2 == 1){
+            testedPoint.setInside();
+        }
         addRay(ray);
     }
 

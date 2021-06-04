@@ -25,6 +25,7 @@ public class Polygon {
         this.points = points;
         this.lines = inputLines;
         this.edgeCount = points.size();
+        setSize();
     }
 
     public ArrayList<Line> getLines() {
@@ -35,7 +36,7 @@ public class Polygon {
         return points;
     }
 
-    public void getSize(){
+    public void setSize(){
         double minx = points.stream().min(Comparator.comparingDouble(point -> point.getX())).get().getX();
         double maxx = points.stream().max(Comparator.comparingDouble(point -> point.getX())).get().getX();
         double miny = points.stream().min(Comparator.comparingDouble(point -> point.getY())).get().getY();
@@ -43,6 +44,14 @@ public class Polygon {
         System.out.println("The size would be:" + (maxx-minx) + " x " + (maxy-miny));
         width = (maxx - minx);
         height = (maxy - miny);
+    }
+
+    public double getHeight() {
+        return height;
+    }
+
+    public double getWidth() {
+        return width;
     }
 
     @Override

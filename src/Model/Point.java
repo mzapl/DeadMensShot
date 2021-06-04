@@ -38,8 +38,8 @@ public class Point {
         return inside;
     }
 
-    public void setInside(boolean inside) {
-        this.inside = inside;
+    public void setInside() {
+        this.inside = true;
     }
 
     @Override

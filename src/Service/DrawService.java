@@ -15,7 +15,8 @@ public class DrawService extends JComponent {
     ArrayList<Line2D.Double> rays;
     ArrayList<Line2D.Double> lines;
     ArrayList<Point2D.Double> points;
-    ArrayList<Point2D.Double> shots;
+    ArrayList<Point2D.Double> shotsIn;
+    ArrayList<Point2D.Double> shotsOut;
 
     public DrawService(int width, int height) {
         super();
@@ -23,7 +24,8 @@ public class DrawService extends JComponent {
         rays = new ArrayList<Line2D.Double>();
         lines = new ArrayList<Line2D.Double>();
         points = new ArrayList<Point2D.Double>();
-        shots = new ArrayList<Point2D.Double>();
+        shotsIn = new ArrayList<Point2D.Double>();
+        shotsOut = new ArrayList<Point2D.Double>();
     }
 
     public void addRay(Line ray) {
@@ -66,7 +68,11 @@ public class DrawService extends JComponent {
 
     public void addShot(Point point) {
         Point2D.Double point2D = new Point2D.Double(point.getX(), point.getY());
-        shots.add(point2D);
+        if(point.isInside()){
+            shotsIn.add(point2D);
+        }else {
+            shotsOut.add(point2D);
+        }
         repaint();
     }
 
@@ -94,10 +100,10 @@ public class DrawService extends JComponent {
             );
         }
 
-        //Draw points (connecting edges of the polygon) for further removal
-        for (Point2D.Double point : points){
-            g.drawOval((int)point.getX(), (int)point.getY(), 1, 1);
-        }
+        //Draw points (connecting edges of the polygon) UNUSED
+//        for (Point2D.Double point : points){
+//            g.drawOval((int)point.getX(), (int)point.getY(), 1, 1);
+//        }
 
         //Draw all of the rays
         for (Line2D.Double ray : rays) {
@@ -109,9 +115,14 @@ public class DrawService extends JComponent {
             );
         }
 
+        g.setColor(Color.green);
+        for (Point2D.Double shot : shotsIn){
+            g.fillOval((int)shot.getX(), (int)shot.getY(), 5, 5);
+        }
+
         g.setColor(Color.red);
-        for (Point2D.Double shot : shots){
-            g.drawOval((int)shot.getX(), (int)shot.getY(), 5, 5);
+        for (Point2D.Double shot : shotsOut){
+            g.drawOval((int)shot.getX(), (int)shot.getY(), 3, 3);
         }
     }
 }
