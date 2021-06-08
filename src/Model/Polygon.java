@@ -5,8 +5,8 @@ import java.util.Comparator;
 
 public class Polygon {
     private final int edgeCount;
-    private final ArrayList<Line> lines;
-    private final ArrayList<Point> points;
+    private ArrayList<Line> lines;
+    private ArrayList<Point> points;
     private double height = 0;
     private double width = 0;
 
@@ -52,6 +52,10 @@ public class Polygon {
 
     public double getWidth() {
         return width;
+    }
+
+    public void setPoints(ArrayList<Point> points) {
+        this.points = points;
     }
 
     @Override

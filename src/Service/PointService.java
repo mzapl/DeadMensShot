@@ -1,14 +1,34 @@
 package Service;
 
+import Model.Canvas;
 import Model.Point;
+import Model.Polygon;
 
 import java.util.ArrayList;
 
 public class PointService {
-    static Point correctionPoint = new Point(0, 0);
+    //Moves the polygon and shots in a +x +y field of coordinates
+    Point positivePoint = new Point(0, 0);
+
+    //Sets the drawing point in a place, where polygon should be centered on canvas
+    Point startingPoint = new Point(0, 0);
+
+    Polygon polygon;
+    ArrayList<Point> points;
     public PointService(){}
 
-    public static void incrementBelowZeros(ArrayList<Point> points){
+    public PointService(ArrayList<Point> points){
+        this(new Polygon(points));
+    }
+
+    public PointService(Polygon polygon){
+        this.polygon = polygon;
+        this.points = polygon.getPoints();
+        incrementBelowZeros();
+        setStartingPoint();
+    }
+
+    public void incrementBelowZeros(){
         double minX = minX(points);
         double incrementX = 0;
 
@@ -28,10 +48,10 @@ public class PointService {
             point.setY(point.getY() + incrementY);
         }
 
-        correctionPoint = new Point(incrementX, incrementY);
+        positivePoint = new Point(incrementX, incrementY);
     }
 
-    static double minX(ArrayList<Point> points){
+    double minX(ArrayList<Point> points){
         double min = Integer.MAX_VALUE;
         for (Point point: points){
             if(point.getX() < min){
@@ -41,7 +61,7 @@ public class PointService {
         return min;
     }
 
-    static double minY(ArrayList<Point> points){
+    double minY(ArrayList<Point> points){
         double min = Integer.MAX_VALUE;
         for (Point point: points){
             if(point.getX() < min){
@@ -51,8 +71,43 @@ public class PointService {
         return min;
     }
 
-    public static Point getCorrectionPoint() {
-        return correctionPoint;
+    public Point getPositivePoint() {
+        return positivePoint;
     }
 
+    public Point getStartingPoint() {
+        return startingPoint;
+    }
+
+    public void setStartingPoint() {
+        this.startingPoint = new Point(polygon.getWidth()/2, polygon.getHeight()/2);
+    }
+
+    public Polygon getPolygon() {
+        return polygon;
+    }
+
+    public void setPolygon(Polygon polygon) {
+        this.polygon = polygon;
+    }
+
+    public ArrayList<Point> getPoints() {
+        return points;
+    }
+
+    public void applyForEach(Point correctionPoint){
+        for (Point point :
+                points) {
+            point.add(correctionPoint);
+        }
+    }
+
+    public void setPoints(ArrayList<Point> points) {
+        this.points = points;
+        this.polygon = new Polygon(points);
+        incrementBelowZeros();
+        setStartingPoint();
+        applyForEach(startingPoint);
+        polygon.setPoints(points);
+    }
 }

@@ -7,8 +7,13 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class TestCases {
-    static ArrayList<Point> points = new ArrayList<>();
-    static ArrayList<Point> shots = new ArrayList<>();
+    ArrayList<Point> points = new ArrayList<>();
+    ArrayList<Point> shots = new ArrayList<>();
+    PointService pointService;
+
+    public TestCases(){
+        this.pointService = new PointService();
+    }
 
     private static final String case0 = "2\n" +
             "100 100\n" +
@@ -125,16 +130,16 @@ public class TestCases {
         return case5;
     }
 
-    public static ArrayList<Point> getPoints() {
-        return points;
+    public ArrayList<Point> getPoints() {
+        return this.points;
     }
 
-    public static ArrayList<Point> getShots() {
-        return shots;
+    public ArrayList<Point> getShots() {
+        return this.shots;
     }
 
     //Polygon points parsing
-    public static void parsePoints(String input){
+    public void parsePoints(String input){
         Scanner in = new Scanner(input);
         int N = in.nextInt();
 
@@ -148,21 +153,23 @@ public class TestCases {
 
         //Repositioning whole polygon to the +x+y quarter in y-inverted cartesian plane.
         //Providing figurative point that will be used to correct the shots later
-        PointService.incrementBelowZeros(points);
+        pointService.setPoints(points);
+
 
         //Returning back the scanner
         parseShots(in);
     }
 
     //Shots (points) parsing
-    public static void parseShots(Scanner in){
+    public void parseShots(Scanner in){
+        Point point;
         int M = in.nextInt();
         for (int i = 0; i < M; i++) {
             int x = in.nextInt();
             int y = in.nextInt();
-            shots.add(new Point(
-                    x + PointService.getCorrectionPoint().getX(),
-                    y + PointService.getCorrectionPoint().getY()));
+            point = new Point( x + pointService.getPositivePoint().getX(), y + pointService.getPositivePoint().getY());
+            point.add(pointService.getStartingPoint());
+            shots.add(point);
         }
     }
 }

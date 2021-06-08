@@ -4,6 +4,7 @@ import Model.Polygon;
 import Model.Ray;
 import Other.TestCases;
 import Service.DrawService;
+import Service.PointService;
 import Service.RayService;
 
 import javax.swing.*;
@@ -11,12 +12,14 @@ import java.util.ArrayList;
 
 public class DeadMensShot {
     public static void main(String []args) {
+        TestCases testCases = new TestCases();
+        testCases.parsePoints(TestCases.getCase5());
 
-        TestCases.parsePoints(TestCases.getCase5());
-        ArrayList<Point> points = TestCases.getPoints();
-        ArrayList<Point> shots = TestCases.getShots();
+        ArrayList<Point> points = testCases.getPoints();
+        ArrayList<Point> shots = testCases.getShots();
 
-        Polygon polygon = new Polygon(points);
+        PointService pointService = new PointService(points);
+        Polygon polygon = pointService.getPolygon();
         ArrayList<Line> lines = polygon.getLines();
 
         RayService rayService = new RayService(polygon);

@@ -31,7 +31,4 @@ public class Canvas {
         return startingPoint;
     }
 
-    public static void setStartingPoint(Polygon polygon) {
-        Canvas.startingPoint = new Point(polygon.getWidth()/2, polygon.getHeight()/2);
-    }
 }

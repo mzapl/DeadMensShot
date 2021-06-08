@@ -14,6 +14,11 @@ public class Point {
         this.y = y;
     }
 
+    public void add(Point anotherPoint){
+        x = x + anotherPoint.getX();
+        y = y + anotherPoint.getY();
+    }
+
     public int getId() {
         return id;
     }
