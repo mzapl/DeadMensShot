@@ -6,7 +6,7 @@ public class Canvas {
     static Point startingPoint;
 
     //Canvas size is set based on polygon
-    void setSize(Polygon polygon){
+    public static void setSize(Polygon polygon){
         setWidth(polygon.getWidth()*2);
         setHeight(polygon.getHeight()*2);
     }

@@ -1,7 +1,4 @@
-import Model.Line;
-import Model.Point;
-import Model.Polygon;
-import Model.Ray;
+import Model.*;
 import Other.TestCases;
 import Service.DrawService;
 import Service.PointService;
@@ -39,13 +36,14 @@ public class DeadMensShot {
         }
 
 //        System.out.println(polygon.getSize());
+        Canvas.setSize(polygon);
         myDrawer(rays, lines, points, shots);
     }
 
     public static void myDrawer(ArrayList<Ray> rays, ArrayList<Line> lines, ArrayList<Point> points, ArrayList<Point> shots){
         Runnable r = new Runnable() {
             public void run() {
-                DrawService drawService = new DrawService(500,500);
+                DrawService drawService = new DrawService((int) Canvas.getWidth(), (int) Canvas.getHeight());
                 drawService.addRays(rays);
                 drawService.addLines(lines);
                 drawService.addPoints(points);
