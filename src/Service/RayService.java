@@ -29,6 +29,13 @@ public class RayService {
         }
     }
 
+    public void cast(ArrayList<Point> testedPoints){
+        for (Point testedPoint :
+                testedPoints) {
+            cast(testedPoint);
+        }
+    }
+
     public void cast(Point testedPoint) {
         this.testedPoint = testedPoint;
         castRay(testedPoint);

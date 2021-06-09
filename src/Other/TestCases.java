@@ -102,6 +102,27 @@ public class TestCases {
             "200 100\n" +
             "175 60";
 
+    private static final String case6 = "12\n" +
+            "0 0\n" +
+            "100 0\n" +
+            "150 25\n" +
+            "200 75\n" +
+            "175 125\n" +
+            "160 130\n" +
+            "150 135\n" +
+            "100 139\n" +
+            "50 125\n" +
+            "-50 100\n" +
+            "-60 50\n" +
+            "-50 25\n" +
+            "6\n" +
+            "50 9sc0\n" +
+            "100 100\n" +
+            "-100 80\n" +
+            "0 120\n" +
+            "200 100\n" +
+            "175 60";
+
     public static String getCase0() {
         return case0;
     }
@@ -128,6 +149,10 @@ public class TestCases {
 
     public static String getCase5() {
         return case5;
+    }
+
+    public static String getCase6() {
+        return case6;
     }
 
     public ArrayList<Point> getPoints() {

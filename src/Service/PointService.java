@@ -1,6 +1,5 @@
 package Service;
 
-import Model.Canvas;
 import Model.Point;
 import Model.Polygon;
 

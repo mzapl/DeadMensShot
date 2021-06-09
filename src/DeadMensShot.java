@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class DeadMensShot {
     public static void main(String []args) {
         TestCases testCases = new TestCases();
-        testCases.parsePoints(TestCases.getCase5());
+        testCases.parsePoints(TestCases.getCase3());
 
         ArrayList<Point> points = testCases.getPoints();
         ArrayList<Point> shots = testCases.getShots();
@@ -20,22 +20,10 @@ public class DeadMensShot {
         ArrayList<Line> lines = polygon.getLines();
 
         RayService rayService = new RayService(polygon);
+        rayService.cast(shots);
 
-        for(Point shot:shots){
-            rayService.cast(shot);
-        }
-
-        //printing the hit or miss for each shot
         ArrayList<Ray> rays = rayService.getRays();
-        for(Ray ray:rays){
-            if(ray.getIntersections() % 2 == 1){
-                System.out.println("hit");
-            }else {
-                System.out.println("miss");
-            }
-        }
 
-//        System.out.println(polygon.getSize());
         Canvas.setSize(polygon);
         myDrawer(rays, lines, points, shots);
     }
