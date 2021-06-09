@@ -1,6 +1,6 @@
 # DeadMensShot
 <p>My solution for codingame puzzle.</p>
-<p>as a bonus draws given polygon, inner and outer points, as well as rays</p>
+<p>All of the onsite testcases went through, this part of the project will not be developed further.</p>
 <img src="https://mathworld.wolfram.com/images/eps-gif/PolygonUnfilled_1000.gif">
 
 <ul>
