@@ -15,15 +15,6 @@ public class TestCases {
         this.pointService = new PointService();
     }
 
-    private static final String case0 = "2\n" +
-            "100 100\n" +
-            "100 -100\n" +
-            "3\n" +
-            "200 200\n" +
-            "50 50\n" +
-            "200 50";
-
-
     private static final String case01 = "4\n" +
             "-100 -100\n" +
             "100 -100\n" +
@@ -116,16 +107,13 @@ public class TestCases {
             "-60 50\n" +
             "-50 25\n" +
             "6\n" +
-            "50 9sc0\n" +
+            "50 90\n" +
             "100 100\n" +
             "-100 80\n" +
             "0 120\n" +
             "200 100\n" +
             "175 60";
 
-    public static String getCase0() {
-        return case0;
-    }
 
     public static String getCase01() {
         return case01;

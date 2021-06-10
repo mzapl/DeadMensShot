@@ -7,6 +7,7 @@ public class Polygon {
     private final int edgeCount;
     private ArrayList<Line> lines;
     private ArrayList<Point> points;
+    private boolean isConvex;
     private double height = 0;
     private double width = 0;
 

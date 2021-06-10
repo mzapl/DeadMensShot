@@ -10,7 +10,7 @@ import java.util.ArrayList;
 public class DeadMensShot {
     public static void main(String []args) {
         TestCases testCases = new TestCases();
-        testCases.parsePoints(TestCases.getCase3());
+        testCases.parsePoints(TestCases.getCase6());
 
         ArrayList<Point> points = testCases.getPoints();
         ArrayList<Point> shots = testCases.getShots();
@@ -24,7 +24,9 @@ public class DeadMensShot {
 
         ArrayList<Ray> rays = rayService.getRays();
 
-        Canvas.setSize(polygon);
+        Canvas.setScale(polygon);
+        Canvas.rescale(shots);
+        Canvas.rescale(polygon);
         myDrawer(rays, lines, points, shots);
     }
 
