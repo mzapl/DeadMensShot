@@ -1,7 +1,7 @@
 # DeadMensShot
 <p>My solution for codingame puzzle.</p>
 <p>as a bonus draws given polygon, inner and outer points, as well as rays</p>
-<img src="./src/Other/testcase-6.png">
+<img src="src/other/testcase-6.png">
 
 <ul>
     <li>
