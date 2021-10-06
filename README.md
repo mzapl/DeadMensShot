@@ -1,7 +1,7 @@
 # DeadMensShot
 <p>My solution for codingame puzzle.</p>
 <p>Creates the polygon from input points, then finds out if each 'shot' is in or out of its bounds.</p>
-<p>as a bonus draws given polygon, inner and outer points and rays</p>
+<p>as a bonus draws given polygon, inner, outer points and rays</p>
 <img src="src/other/testcase-6.png">
 
 <ul>
